@@ -1,10 +1,13 @@
-import React from "react"
-import TodoItem from "./TodoItem"
+import React from 'react';
+import PropTypes from 'prop-types';
+import TodoItem from './TodoItem';
 
-const TodosList = props => {
+const TodosList = (props) => {
+  const { todos } = props;
+
   return (
     <ul>
-      {props.todos.map(todo => (
+      {todos.map((todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}
@@ -14,6 +17,14 @@ const TodosList = props => {
         />
       ))}
     </ul>
-  )
-}
-export default TodosList
+  );
+};
+
+TodosList.propTypes = {
+  todos: PropTypes.PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
+
+export default TodosList;
