@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import styles from './TodoItem.module.css';
@@ -22,8 +22,8 @@ const TodoItem = (props) => {
     opacity: 0.4,
     textDecoration: 'line-through',
   };
-
-  const { completed, id, title } = props.todo;
+  const { todo } = props;
+  const { completed, id, title } = todo;
 
   const viewMode = {};
   const editMode = {};
@@ -33,10 +33,6 @@ const TodoItem = (props) => {
   } else {
     editMode.display = 'none';
   }
-
-  useEffect(() => () => {
-    console.log('Cleaning up...');
-  }, []);
 
   return (
     <li className={styles.item}>
